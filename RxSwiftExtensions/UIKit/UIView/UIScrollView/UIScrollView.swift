@@ -9,11 +9,10 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import RxOptional
 
 extension Reactive where Base: UIScrollView {
     public var contentSize: Observable<CGSize> {
-        return self.observeWeakly(keyPath: \.contentSize, options: [.initial, .new]).filterNil()
+        return self.observeWeakly(keyPath: \.contentSize, options: [.initial, .new]).compactMap({ $0 })
     }
     
     public var scrollableVertical: Observable<Bool> {

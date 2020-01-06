@@ -85,7 +85,7 @@ extension Reactive where Base: UICollectionView {
         -> (_ source: O)
         -> (_ configureCell: @escaping (Int, S.Iterator.Element, Cell) -> Void)
         -> Disposable
-        where O.E == S {
+        where O.Element == S {
             return self.items(cellIdentifier: cell.Identifier, cellType: cell)
     }
 }

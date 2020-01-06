@@ -15,7 +15,7 @@ class RxSwift_WithLatestFromAndSelfTests: XCTestCase {
         let source2 = Observable.just(10)
         
         var latest: Int = 0
-        let disposable = source1
+        _ = source1
             .withLatestFromAndSelf(source2)
             .map({ $0 + $1 })
             .subscribe(onNext: { latest = $0 })

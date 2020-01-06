@@ -16,7 +16,7 @@ class RxCocoa_WithLatestFromAndSelfTests: XCTestCase {
         let source2 = Driver.just(10)
         
         var latest: Int = 0
-        let disposable = source1
+        _ = source1
             .asDriver(onErrorJustReturn: 0)
             .withLatestFromAndSelf(source2)
             .map({ $0 + $1 })

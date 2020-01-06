@@ -16,7 +16,7 @@ extension SharedSequenceConvertibleType {
      - parameter second: Second observable source.
      - returns: An observable sequence containing the result of combining each element of the self  with the latest element from the second source, if any, using the specified result selector function.
      */
-    public func withLatestFromAndSelf<SecondO: SharedSequenceConvertibleType>(_ second: SecondO) -> SharedSequence<SharingStrategy, (Self.E, SecondO.E)> where SecondO.SharingStrategy == SharingStrategy {
+    public func withLatestFromAndSelf<SecondO: SharedSequenceConvertibleType>(_ second: SecondO) -> SharedSequence<SharingStrategy, (Self.Element, SecondO.Element)> where SecondO.SharingStrategy == SharingStrategy {
         return self.withLatestFrom(second) { ($0, $1) }
     }
     
@@ -30,7 +30,7 @@ extension SharedSequenceConvertibleType {
      */
     public func withLatestFromAndSelf<O1: SharedSequenceConvertibleType,
                                       O2: SharedSequenceConvertibleType>
-        (_ source1: O1, _ source2: O2) -> SharedSequence<SharingStrategy, (Self.E, O1.E, O2.E)>
+        (_ source1: O1, _ source2: O2) -> SharedSequence<SharingStrategy, (Self.Element, O1.Element, O2.Element)>
         where O1.SharingStrategy == SharingStrategy,
               O2.SharingStrategy == SharingStrategy {
                 return self.withLatestFromAndSelf(source1)
@@ -49,7 +49,7 @@ extension SharedSequenceConvertibleType {
     public func withLatestFromAndSelf<O1: SharedSequenceConvertibleType,
                                       O2: SharedSequenceConvertibleType,
                                       ResultType>
-        (_ source1: O1, _ source2: O2, resultSelector: @escaping (Self.E, O1.E, O2.E) -> ResultType) -> SharedSequence<SharingStrategy, ResultType>
+        (_ source1: O1, _ source2: O2, resultSelector: @escaping (Self.Element, O1.Element, O2.Element) -> ResultType) -> SharedSequence<SharingStrategy, ResultType>
         where O1.SharingStrategy == SharingStrategy,
               O2.SharingStrategy == SharingStrategy {
                 return self.withLatestFromAndSelf(source1, source2)
@@ -68,7 +68,7 @@ extension SharedSequenceConvertibleType {
     public func withLatestFromAndSelf<O1: SharedSequenceConvertibleType,
                                       O2: SharedSequenceConvertibleType,
                                       O3: SharedSequenceConvertibleType>
-        (_ source1: O1, _ source2: O2, _ source3: O3) -> SharedSequence<SharingStrategy, (Self.E, O1.E, O2.E, O3.E)>
+        (_ source1: O1, _ source2: O2, _ source3: O3) -> SharedSequence<SharingStrategy, (Self.Element, O1.Element, O2.Element, O3.Element)>
         where O1.SharingStrategy == SharingStrategy,
               O2.SharingStrategy == SharingStrategy,
               O3.SharingStrategy == SharingStrategy {
@@ -90,7 +90,7 @@ extension SharedSequenceConvertibleType {
                                       O2: SharedSequenceConvertibleType,
                                       O3: SharedSequenceConvertibleType,
                                       ResultType>
-        (_ source1: O1, _ source2: O2, _ source3: O3, resultSelector: @escaping (E, O1.E, O2.E, O3.E) -> ResultType) -> SharedSequence<SharingStrategy, ResultType>
+        (_ source1: O1, _ source2: O2, _ source3: O3, resultSelector: @escaping (Element, O1.Element, O2.Element, O3.Element) -> ResultType) -> SharedSequence<SharingStrategy, ResultType>
         where O1.SharingStrategy == SharingStrategy,
               O2.SharingStrategy == SharingStrategy,
               O3.SharingStrategy == SharingStrategy {
@@ -112,7 +112,7 @@ extension SharedSequenceConvertibleType {
                                       O2: SharedSequenceConvertibleType,
                                       O3: SharedSequenceConvertibleType,
                                       O4: SharedSequenceConvertibleType>
-        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4) -> SharedSequence<SharingStrategy, (Self.E, O1.E, O2.E, O3.E, O4.E)>
+        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4) -> SharedSequence<SharingStrategy, (Self.Element, O1.Element, O2.Element, O3.Element, O4.Element)>
         where O1.SharingStrategy == SharingStrategy,
               O2.SharingStrategy == SharingStrategy,
               O3.SharingStrategy == SharingStrategy,
@@ -137,7 +137,7 @@ extension SharedSequenceConvertibleType {
                                       O3: SharedSequenceConvertibleType,
                                       O4: SharedSequenceConvertibleType,
                                       ResultType>
-        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4, resultSelector: @escaping (E, O1.E, O2.E, O3.E, O4.E) -> ResultType) -> SharedSequence<SharingStrategy, ResultType>
+        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4, resultSelector: @escaping (Element, O1.Element, O2.Element, O3.Element, O4.Element) -> ResultType) -> SharedSequence<SharingStrategy, ResultType>
         where O1.SharingStrategy == SharingStrategy,
               O2.SharingStrategy == SharingStrategy,
               O3.SharingStrategy == SharingStrategy,
@@ -162,7 +162,7 @@ extension SharedSequenceConvertibleType {
                                       O3: SharedSequenceConvertibleType,
                                       O4: SharedSequenceConvertibleType,
                                       O5: SharedSequenceConvertibleType>
-        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4, _ source5: O5) -> SharedSequence<SharingStrategy, (Self.E, O1.E, O2.E, O3.E, O4.E, O5.E)>
+        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4, _ source5: O5) -> SharedSequence<SharingStrategy, (Self.Element, O1.Element, O2.Element, O3.Element, O4.Element, O5.Element)>
         where O1.SharingStrategy == SharingStrategy,
               O2.SharingStrategy == SharingStrategy,
               O3.SharingStrategy == SharingStrategy,
@@ -190,7 +190,7 @@ extension SharedSequenceConvertibleType {
                                       O4: SharedSequenceConvertibleType,
                                       O5: SharedSequenceConvertibleType,
                                       ResultType>
-        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4, _ source5: O5, resultSelector: @escaping (E, O1.E, O2.E, O3.E, O4.E, O5.E) -> ResultType) -> SharedSequence<SharingStrategy, ResultType>
+        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4, _ source5: O5, resultSelector: @escaping (Element, O1.Element, O2.Element, O3.Element, O4.Element, O5.Element) -> ResultType) -> SharedSequence<SharingStrategy, ResultType>
         where O1.SharingStrategy == SharingStrategy,
               O2.SharingStrategy == SharingStrategy,
               O3.SharingStrategy == SharingStrategy,

@@ -18,7 +18,7 @@ extension ObservableType {
      - parameter second: Second observable source.
      - returns: An observable sequence containing the result of combining each element of the self  with the latest element from the second source, if any, using the specified result selector function.
      */
-    public func withLatestFromAndSelf<SecondO: ObservableConvertibleType>(_ second: SecondO) -> Observable<(Self.E, SecondO.E)> {
+    public func withLatestFromAndSelf<SecondO: ObservableConvertibleType>(_ second: SecondO) -> Observable<(Self.Element, SecondO.Element)> {
         return self.withLatestFrom(second) { ($0, $1) }
     }
     
@@ -34,7 +34,7 @@ extension ObservableType {
      */
     public func withLatestFromAndSelf<O1: ObservableConvertibleType,
                                       O2: ObservableConvertibleType>
-        (_ source1: O1, _ source2: O2) -> Observable<(Self.E, O1.E, O2.E)> {
+        (_ source1: O1, _ source2: O2) -> Observable<(Self.Element, O1.Element, O2.Element)> {
         return self.withLatestFromAndSelf(source1)
             .withLatestFromAndSelf(source2)
             .map({ ($0.0, $0.1, $1) })
@@ -53,7 +53,7 @@ extension ObservableType {
     public func withLatestFromAndSelf<O1: ObservableConvertibleType,
                                       O2: ObservableConvertibleType,
                                       ResultType>
-        (_ source1: O1, _ source2: O2, resultSelector: @escaping (Self.E, O1.E, O2.E) throws -> ResultType) -> Observable<ResultType> {
+        (_ source1: O1, _ source2: O2, resultSelector: @escaping (Self.Element, O1.Element, O2.Element) throws -> ResultType) -> Observable<ResultType> {
         return self.withLatestFromAndSelf(source1, source2)
             .map({ try resultSelector($0.0, $0.1, $0.2) })
     }
@@ -72,7 +72,7 @@ extension ObservableType {
     public func withLatestFromAndSelf<O1: ObservableConvertibleType,
                                       O2: ObservableConvertibleType,
                                       O3: ObservableConvertibleType>
-        (_ source1: O1, _ source2: O2, _ source3: O3) -> Observable<(Self.E, O1.E, O2.E, O3.E)> {
+        (_ source1: O1, _ source2: O2, _ source3: O3) -> Observable<(Self.Element, O1.Element, O2.Element, O3.Element)> {
         return self.withLatestFromAndSelf(source1, source2)
             .withLatestFromAndSelf(source3)
             .map({ ($0.0, $0.1, $0.2, $1) })
@@ -93,7 +93,7 @@ extension ObservableType {
                                       O2: ObservableConvertibleType,
                                       O3: ObservableConvertibleType,
                                       ResultType>
-        (_ source1: O1, _ source2: O2, _ source3: O3, resultSelector: @escaping (Self.E, O1.E, O2.E, O3.E) throws -> ResultType) -> Observable<ResultType> {
+        (_ source1: O1, _ source2: O2, _ source3: O3, resultSelector: @escaping (Self.Element, O1.Element, O2.Element, O3.Element) throws -> ResultType) -> Observable<ResultType> {
         return self.withLatestFromAndSelf(source1, source2, source3)
             .map({ try resultSelector($0.0, $0.1, $0.2, $0.3) })
     }
@@ -114,7 +114,7 @@ extension ObservableType {
                                       O2: ObservableConvertibleType,
                                       O3: ObservableConvertibleType,
                                       O4: ObservableConvertibleType>
-        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4) -> Observable<(Self.E, O1.E, O2.E, O3.E, O4.E)> {
+        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4) -> Observable<(Self.Element, O1.Element, O2.Element, O3.Element, O4.Element)> {
         return self.withLatestFromAndSelf(source1, source2, source3)
             .withLatestFromAndSelf(source4)
             .map({ ($0.0, $0.1, $0.2, $0.3, $1) })
@@ -137,7 +137,7 @@ extension ObservableType {
                                       O3: ObservableConvertibleType,
                                       O4: ObservableConvertibleType,
                                       ResultType>
-        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4, resultSelector: @escaping (Self.E, O1.E, O2.E, O3.E, O4.E) throws -> ResultType) -> Observable<ResultType> {
+        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4, resultSelector: @escaping (Self.Element, O1.Element, O2.Element, O3.Element, O4.Element) throws -> ResultType) -> Observable<ResultType> {
         return self.withLatestFromAndSelf(source1, source2, source3, source4)
             .map({ try resultSelector($0.0, $0.1, $0.2, $0.3, $0.4) })
     }
@@ -160,7 +160,7 @@ extension ObservableType {
                                       O3: ObservableConvertibleType,
                                       O4: ObservableConvertibleType,
                                       O5: ObservableConvertibleType>
-        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4, _ source5: O5) -> Observable<(Self.E, O1.E, O2.E, O3.E, O4.E, O5.E)> {
+        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4, _ source5: O5) -> Observable<(Self.Element, O1.Element, O2.Element, O3.Element, O4.Element, O5.Element)> {
         return self.withLatestFromAndSelf(source1, source2, source3, source4)
             .withLatestFromAndSelf(source5)
             .map({ ($0.0, $0.1, $0.2, $0.3, $0.4, $1) })
@@ -185,7 +185,7 @@ extension ObservableType {
                                       O4: ObservableConvertibleType,
                                       O5: ObservableConvertibleType,
                                       ResultType>
-        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4, _ source5: O5, resultSelector: @escaping (Self.E, O1.E, O2.E, O3.E, O4.E, O5.E) throws -> ResultType) -> Observable<ResultType> {
+        (_ source1: O1, _ source2: O2, _ source3: O3, _ source4: O4, _ source5: O5, resultSelector: @escaping (Self.Element, O1.Element, O2.Element, O3.Element, O4.Element, O5.Element) throws -> ResultType) -> Observable<ResultType> {
         return self.withLatestFromAndSelf(source1, source2, source3, source4, source5)
             .map({ try resultSelector($0.0, $0.1, $0.2, $0.3, $0.4, $0.5) })
     }

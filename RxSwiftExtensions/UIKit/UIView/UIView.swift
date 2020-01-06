@@ -9,14 +9,13 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import RxOptional
 
 extension Reactive where Base: UIView {
     public var bounds: Observable<CGRect> {
-        return self.observeWeakly(keyPath: \.bounds, options: [.initial, .new]).filterNil()
+        return self.observeWeakly(keyPath: \.bounds, options: [.initial, .new]).compactMap({ $0 })
     }
     
     public var center: Observable<CGPoint> {
-        return self.observeWeakly(keyPath: \.center, options: [.initial, .new]).filterNil()
+        return self.observeWeakly(keyPath: \.center, options: [.initial, .new]).compactMap({ $0 })
     }
 }

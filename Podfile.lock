@@ -1,44 +1,43 @@
 PODS:
-  - RxCocoa (4.3.1):
-    - RxSwift (~> 4.0)
-  - RxExpect (1.1.0):
-    - RxCocoa (>= 4.0.0)
-    - RxSwift (>= 4.0.0)
-    - RxTest (>= 4.0.0)
-  - RxOptional (3.5.0):
-    - RxCocoa (~> 4.0)
-    - RxSwift (~> 4.0)
-  - RxSwift (4.3.1)
-  - RxTest (4.3.1):
-    - RxSwift (~> 4.0)
-  - RxViewController (0.3.0):
-    - RxCocoa (>= 4.0.0)
-    - RxSwift (>= 4.0.0)
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxExpect (2.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+    - RxTest (~> 5.0)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
+  - RxTest (5.0.1):
+    - RxSwift (~> 5)
+  - RxViewController (1.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
 
 DEPENDENCIES:
-  - RxCocoa (~> 4.0)
+  - RxCocoa
   - RxExpect
-  - RxOptional (~> 3.5)
-  - RxSwift (~> 4.0)
+  - RxSwift
   - RxViewController
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - RxCocoa
     - RxExpect
-    - RxOptional
+    - RxRelay
     - RxSwift
     - RxTest
     - RxViewController
 
 SPEC CHECKSUMS:
-  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
-  RxExpect: 618ecd84f07b644e9fb436e1a0ec39363caa22b2
-  RxOptional: bd32ff8ca9df4177683d56ffeb618a9d4d5d5cad
-  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
-  RxTest: ea97a208826906f3904c0debdd09575ebcbfe216
-  RxViewController: 203510707e73dd95f147f0c387710e3ec80d2b0f
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxExpect: 0685c9003c6d38532d5b101367eaf86b3adda81a
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  RxTest: 0132f952a61da82d5233abedaa559df91e5330e5
+  RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
 
-PODFILE CHECKSUM: a8581b5d636f81e9b53024315b1d1fd1fae350fd
+PODFILE CHECKSUM: be4939ed1f7eba5ba3e16cbcf55d22fb5812a40c
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.3

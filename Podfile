@@ -4,7 +4,6 @@ use_frameworks!
 def common
     pod 'RxSwift'
     pod 'RxCocoa'
-    pod 'RxOptional'
     pod 'RxViewController'
 end
 
