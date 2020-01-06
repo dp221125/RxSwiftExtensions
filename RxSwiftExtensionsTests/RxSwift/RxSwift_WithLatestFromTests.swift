@@ -12,19 +12,21 @@ import RxSwift
 class RxSwift_WithLatestFromTests: XCTestCase {
     func testWithLatestFrom() {
         let fire = PublishSubject<Void>()
-        
+        let disposeBag = DisposeBag()
         var latest: String = ""
-        var disposable = fire
+        fire
             .withLatestFrom(Observable.just("A"), Observable.just("B"))
             .map({ $0 + $1 })
             .subscribe(onNext: { latest = $0 })
+            .disposed(by: disposeBag)
         fire.onNext(())
         XCTAssertEqual(latest, "AB")
         
-        disposable = fire
+        fire
             .withLatestFrom(Observable.just("A"), Observable.just("B"), Observable.just("C"))
             .map({ $0 + $1 + $2 })
             .subscribe(onNext: { latest = $0 })
+            .disposed(by: disposeBag)
         fire.onNext(())
         XCTAssertEqual(latest, "ABC")
     }

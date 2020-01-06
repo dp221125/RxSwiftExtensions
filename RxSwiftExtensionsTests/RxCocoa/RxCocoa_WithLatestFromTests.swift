@@ -13,21 +13,24 @@ import RxCocoa
 class RxCocoa_WithLatestFromTests: XCTestCase {
     func testWithLatestFrom() {
         let fire = PublishSubject<Void>()
+        let disposeBag = DisposeBag()
         
         var latest: String = ""
-        var disposable = fire
+        fire
             .asDriver(onErrorJustReturn: ())
             .withLatestFrom(Driver.just("A"), Driver.just("B"))
             .map({ $0 + $1 })
             .drive(onNext: { latest = $0 })
+            .disposed(by: disposeBag)
         fire.onNext(())
         XCTAssertEqual(latest, "AB")
         
-        disposable = fire
+        fire
             .asDriver(onErrorJustReturn: ())
             .withLatestFrom(Driver.just("A"), Driver.just("B"), Driver.just("C"))
             .map({ $0 + $1 + $2 })
             .drive(onNext: { latest = $0 })
+            .disposed(by: disposeBag)
         fire.onNext(())
         XCTAssertEqual(latest, "ABC")
     }

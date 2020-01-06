@@ -14,13 +14,15 @@ class RxCocoa_WithLatestFromAndSelfTests: XCTestCase {
     func testWithLatestFromAndSelf() {
         let source1 = PublishSubject<Int>()
         let source2 = Driver.just(10)
+        let disposeBag = DisposeBag()
         
         var latest: Int = 0
-        _ = source1
+        source1
             .asDriver(onErrorJustReturn: 0)
             .withLatestFromAndSelf(source2)
             .map({ $0 + $1 })
             .drive(onNext: { latest = $0 })
+            .disposed(by: disposeBag)
         
         source1.onNext(1)
         XCTAssertEqual(latest, 11)
